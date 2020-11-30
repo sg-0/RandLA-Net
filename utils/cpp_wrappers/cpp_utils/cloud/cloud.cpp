@@ -20,7 +20,6 @@
 
 #include "cloud.h"
 
-
 // Getters
 // *******
 
@@ -32,14 +31,9 @@ PointXYZ max_point(std::vector<PointXYZ> points)
 	// Loop over all points
 	for (auto p : points)
 	{
-		if (p.x > maxP.x)
-			maxP.x = p.x;
-
-		if (p.y > maxP.y)
-			maxP.y = p.y;
-
-		if (p.z > maxP.z)
-			maxP.z = p.z;
+		maxP.x = fmax(maxP.x,p.x);
+		maxP.y = fmax(maxP.y,p.y);
+		maxP.z = fmax(maxP.z,p.z);
 	}
 
 	return maxP;
@@ -53,14 +47,9 @@ PointXYZ min_point(std::vector<PointXYZ> points)
 	// Loop over all points
 	for (auto p : points)
 	{
-		if (p.x < minP.x)
-			minP.x = p.x;
-
-		if (p.y < minP.y)
-			minP.y = p.y;
-
-		if (p.z < minP.z)
-			minP.z = p.z;
+		minP.x = fmin(minP.x,p.x);
+		minP.y = fmin(minP.y,p.y);
+		minP.z = fmin(minP.z,p.z);
 	}
 
 	return minP;
